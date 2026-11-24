@@ -1,0 +1,90 @@
+[
+  {
+    "algo": "dqn",
+    "model": "dqn_07.pt",
+    "profiles": "training range",
+    "mean_return": 84.62179915208075,
+    "std_return": 6.469364958763329,
+    "success_rate": 0.965,
+    "injury_rate": 0.0,
+    "dropout_rate": 0.0,
+    "mean_days": 30.325
+  },
+  {
+    "algo": "dqn",
+    "model": "dqn_07.pt",
+    "profiles": "unseen range",
+    "mean_return": 77.63476278652804,
+    "std_return": 14.018481828426332,
+    "success_rate": 0.765,
+    "injury_rate": 0.0,
+    "dropout_rate": 0.005,
+    "mean_days": 32.805
+  },
+  {
+    "algo": "reinforce",
+    "model": "reinforce_05.pt",
+    "profiles": "training range",
+    "mean_return": 73.06488936478632,
+    "std_return": 9.898269004021662,
+    "success_rate": 0.84,
+    "injury_rate": 0.0,
+    "dropout_rate": 0.0,
+    "mean_days": 34.965
+  },
+  {
+    "algo": "reinforce",
+    "model": "reinforce_05.pt",
+    "profiles": "unseen range",
+    "mean_return": 65.66025750026371,
+    "std_return": 16.20439523284741,
+    "success_rate": 0.64,
+    "injury_rate": 0.0,
+    "dropout_rate": 0.0,
+    "mean_days": 36.1
+  },
+  {
+    "algo": "a2c",
+    "model": "a2c_04.pt",
+    "profiles": "training range",
+    "mean_return": 79.72837370201889,
+    "std_return": 7.8286057017173745,
+    "success_rate": 0.91,
+    "injury_rate": 0.0,
+    "dropout_rate": 0.005,
+    "mean_days": 30.93
+  },
+  {
+    "algo": "a2c",
+    "model": "a2c_04.pt",
+    "profiles": "unseen range",
+    "mean_return": 72.0271053323182,
+    "std_return": 16.73128173095771,
+    "success_rate": 0.72,
+    "injury_rate": 0.0,
+    "dropout_rate": 0.03,
+    "mean_days": 33.62
+  },
+  {
+    "algo": "ppo",
+    "model": "ppo_03.pt",
+    "profiles": "training range",
+    "mean_return": 82.75983557833817,
+    "std_return": 7.187989440874469,
+    "success_rate": 0.96,
+    "injury_rate": 0.0,
+    "dropout_rate": 0.005,
+    "mean_days": 29.335
+  },
+  {
+    "algo": "ppo",
+    "model": "ppo_03.pt",
+    "profiles": "unseen range",
+    "mean_return": 76.04667487859162,
+    "std_return": 14.712338707773814,
+    "success_rate": 0.78,
+    "injury_rate": 0.0,
+    "dropout_rate": 0.01,
+    "mean_days": 32.38
+  }
+]

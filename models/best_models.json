@@ -1,0 +1,19 @@
+{
+  "dqn": {
+    "path": "./models/dqn/dqn_07.pt",
+    "validation_return": 84.033
+  },
+  "reinforce": {
+    "path": "./models/pg/reinforce_05.pt",
+    "validation_return": 73.855
+  },
+  "a2c": {
+    "path": "./models/pg/a2c_04.pt",
+    "validation_return": 78.896
+  },
+  "ppo": {
+    "path": "./models/pg/ppo_03.pt",
+    "validation_return": 82.707
+  },
+  "overall": "dqn"
+}

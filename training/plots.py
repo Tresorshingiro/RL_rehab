@@ -18,7 +18,8 @@ WINDOW = 50                              # episodes in the rolling mean
 plt.rcParams.update({
     "figure.dpi": 150, "axes.spines.top": False, "axes.spines.right": False,
     "axes.edgecolor": MUTED, "axes.labelcolor": INK, "xtick.color": MUTED, "ytick.color": MUTED,
-    "axes.grid": True, "grid.color": GRID, "grid.linewidth": 0.8, "lines.linewidth": 2,
+    "axes.grid": True, "axes.axisbelow": True,          # gridlines behind bars, not across them
+    "grid.color": GRID, "grid.linewidth": 0.8, "lines.linewidth": 2,
     "font.size": 10, "legend.frameon": False,
 })
 
@@ -33,10 +34,24 @@ def best_config_ids(root="."):
     return {algo: os.path.basename(best[algo]["path"])[:-3] for algo in ALGOS}
 
 
-def label_line_end(ax, x, y, text, color):
-    """Direct label at the right end of a line, in text ink with a colored marker."""
-    ax.plot([x], [y], "o", color=color, markersize=5)
-    ax.annotate(text, (x, y), xytext=(6, 0), textcoords="offset points", va="center", color=INK, fontsize=9)
+def label_line_ends(ax, ends, min_gap=0.06):
+    """Direct labels at the right end of each line, in text ink with a colored marker.
+
+    `ends` is a list of (x, y, text, color). Labels whose lines end close together
+    are pushed apart vertically (min_gap = fraction of the y-axis height) and placed
+    in one column just right of the last line end, so they never overlap.
+    """
+    low, high = ax.get_ylim()
+    gap = min_gap * (high - low)
+    x_text = max(x for x, _, _, _ in ends)
+    placed = []
+    for x, y, text, color in sorted(ends, key=lambda e: e[1]):
+        ax.plot([x], [y], "o", color=color, markersize=5)
+        y_text = max(y, placed[-1] + gap) if placed else y
+        placed.append(y_text)
+        ax.annotate(text, (x_text, y_text), xytext=(8, 0), textcoords="offset points",
+                    va="center", color=INK, fontsize=9, annotation_clip=False)
+    ax.set_ylim(low, high)
 
 
 def save(fig, name, root):
@@ -48,13 +63,15 @@ def save(fig, name, root):
 
 
 def plot_reward_comparison(best, root):
+    # All four lines end within a few points of each other, so the legend names them
+    # (direct end labels would have to be pushed too far from their lines).
     fig, ax = plt.subplots(figsize=(8, 4.5))
     for algo in ALGOS:
         df = load_log(algo, best[algo], root)
         smooth = rolling_mean(df["episode_return"], WINDOW)
         ax.plot(df["episode"], df["episode_return"], color=COLORS[algo], alpha=0.12, linewidth=0.8)
         ax.plot(df["episode"], smooth, color=COLORS[algo], label=f"{LABELS[algo]} ({best[algo]})")
-        label_line_end(ax, df["episode"].iloc[-1], smooth.iloc[-1], LABELS[algo], COLORS[algo])
+        ax.plot([df["episode"].iloc[-1]], [smooth.iloc[-1]], "o", color=COLORS[algo], markersize=5)
     ax.set(title=f"Episode return, best config per method ({WINDOW}-episode rolling mean)",
            xlabel="Episode", ylabel="Cumulative reward per episode")
     ax.legend(loc="lower right")
@@ -75,10 +92,12 @@ def plot_dqn_loss(best, root):
 
 def plot_entropy(best, root):
     fig, ax = plt.subplots(figsize=(8, 4))
+    ends = []
     for algo in ["reinforce", "a2c", "ppo"]:
         df = load_log(algo, best[algo], root)
         ax.plot(df["env_steps"], df["entropy"], color=COLORS[algo], label=LABELS[algo])
-        label_line_end(ax, df["env_steps"].iloc[-1], df["entropy"].iloc[-1], LABELS[algo], COLORS[algo])
+        ends.append((df["env_steps"].iloc[-1], df["entropy"].iloc[-1], LABELS[algo], COLORS[algo]))
+    label_line_ends(ax, ends)
     ax.axhline(2.197, color=MUTED, linestyle="--", linewidth=1)
     ax.annotate("uniform policy, ln 9", (0, 2.197), xytext=(4, 4), textcoords="offset points", color=MUTED, fontsize=8)
     ax.set(title="Policy entropy during training (best config per method)",
@@ -127,10 +146,12 @@ def plot_generalisation(root):
         ax.bar_label(b1, labels=[f"{seen:.0%}"], fontsize=8, color=INK)
         ax.bar_label(b2, labels=[f"{unseen:.0%}"], fontsize=8, color=INK)
     ax.set_xticks(range(len(ALGOS)), [LABELS[a] for a in ALGOS])
-    ax.set(title="Success rate on 200 held-out patients", ylabel="Success rate", ylim=(0, 1.1))
+    # Extra headroom above 100% holds the legend, so it never covers a bar label.
+    ax.set(title="Success rate on 200 held-out patients", ylabel="Success rate", ylim=(0, 1.28))
+    ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
     ax.bar(0, 0, color=MUTED, label="held-out seeds, training profile range")
     ax.bar(0, 0, color=MUTED, alpha=0.45, hatch="//", edgecolor="white", label="held-out seeds, unseen (harder) range")
-    ax.legend(loc="upper left", fontsize=8)
+    ax.legend(loc="upper center", ncol=2, fontsize=8)
     ax.grid(axis="x", visible=False)
     save(fig, "generalisation.png", root)
 

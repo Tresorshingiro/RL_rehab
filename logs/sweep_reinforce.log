@@ -1,0 +1,42 @@
+/usr/local/lib/python3.13/dist-packages/torchrl/_utils.py:132: DeprecationWarning: TorchRL support for torch<2.13 (found torch 2.11.0+cpu) is deprecated and will be removed in v0.17. torch 2.11 and 2.12 remain supported until then for stacks that pin them, such as Isaac Lab 3.0. Upgrade to torch>=2.13 to silence this warning.
+  warnings.warn(
+=== reinforce_01: baseline (pure Monte-Carlo) ===
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[reinforce_01] done: 150528 steps, 4034 episodes -> ./models/pg/reinforce_01.pt
+    took 192s
+=== reinforce_02: lower learning rate ===
+[reinforce_02] done: 150528 steps, 3818 episodes -> ./models/pg/reinforce_02.pt
+    took 197s
+=== reinforce_03: higher learning rate ===
+[reinforce_03] done: 150528 steps, 4333 episodes -> ./models/pg/reinforce_03.pt
+    took 196s
+=== reinforce_04: short horizon ===
+[reinforce_04] done: 150528 steps, 4232 episodes -> ./models/pg/reinforce_04.pt
+    took 197s
+=== reinforce_05: short rollout (512) ===
+[reinforce_05] done: 150016 steps, 4188 episodes -> ./models/pg/reinforce_05.pt
+    took 198s
+=== reinforce_06: long rollout (2048) ===
+[reinforce_06] done: 151552 steps, 3929 episodes -> ./models/pg/reinforce_06.pt
+    took 192s
+=== reinforce_07: no entropy bonus ===
+[reinforce_07] done: 150528 steps, 4022 episodes -> ./models/pg/reinforce_07.pt
+    took 195s
+=== reinforce_08: strong entropy bonus ===
+[reinforce_08] done: 150528 steps, 3911 episodes -> ./models/pg/reinforce_08.pt
+    took 194s
+=== reinforce_09: no return normalisation ===
+[reinforce_09] done: 150528 steps, 3906 episodes -> ./models/pg/reinforce_09.pt
+    took 201s
+=== reinforce_10: learned baseline V(s) ===
+[reinforce_10] done: 150528 steps, 3956 episodes -> ./models/pg/reinforce_10.pt
+    took 190s
+=== reinforce_11: baseline, heavy value loss ===
+[reinforce_11] done: 150528 steps, 3961 episodes -> ./models/pg/reinforce_11.pt
+    took 190s
+=== reinforce_12: bigger network ===
+[reinforce_12] done: 150528 steps, 4173 episodes -> ./models/pg/reinforce_12.pt
+    took 206s

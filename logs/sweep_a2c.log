@@ -1,0 +1,42 @@
+/usr/local/lib/python3.13/dist-packages/torchrl/_utils.py:132: DeprecationWarning: TorchRL support for torch<2.13 (found torch 2.11.0+cpu) is deprecated and will be removed in v0.17. torch 2.11 and 2.12 remain supported until then for stacks that pin them, such as Isaac Lab 3.0. Upgrade to torch>=2.13 to silence this warning.
+  warnings.warn(
+=== a2c_01: baseline ===
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[a2c_01] done: 150016 steps, 4369 episodes -> ./models/pg/a2c_01.pt
+    took 208s
+=== a2c_02: lower learning rate ===
+[a2c_02] done: 150016 steps, 4354 episodes -> ./models/pg/a2c_02.pt
+    took 205s
+=== a2c_03: higher learning rate ===
+[a2c_03] done: 150016 steps, 4111 episodes -> ./models/pg/a2c_03.pt
+    took 209s
+=== a2c_04: short horizon ===
+[a2c_04] done: 150016 steps, 4686 episodes -> ./models/pg/a2c_04.pt
+    took 212s
+=== a2c_05: very short rollout (64) ===
+[a2c_05] done: 150016 steps, 4497 episodes -> ./models/pg/a2c_05.pt
+    took 222s
+=== a2c_06: longer rollout (512) ===
+[a2c_06] done: 150016 steps, 4193 episodes -> ./models/pg/a2c_06.pt
+    took 191s
+=== a2c_07: no entropy bonus ===
+[a2c_07] done: 150016 steps, 4565 episodes -> ./models/pg/a2c_07.pt
+    took 210s
+=== a2c_08: strong entropy bonus ===
+[a2c_08] done: 150016 steps, 4194 episodes -> ./models/pg/a2c_08.pt
+    took 206s
+=== a2c_09: GAE lambda 1.0 (n-step returns) ===
+[a2c_09] done: 150016 steps, 4400 episodes -> ./models/pg/a2c_09.pt
+    took 209s
+=== a2c_10: no advantage normalisation ===
+[a2c_10] done: 150016 steps, 4565 episodes -> ./models/pg/a2c_10.pt
+    took 202s
+=== a2c_11: light value loss ===
+[a2c_11] done: 150016 steps, 4466 episodes -> ./models/pg/a2c_11.pt
+    took 215s
+=== a2c_12: heavy value loss ===
+[a2c_12] done: 150016 steps, 4445 episodes -> ./models/pg/a2c_12.pt
+    took 175s

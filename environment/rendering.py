@@ -22,7 +22,7 @@ PANEL_WIDTH = hud.PANEL_SIZE[0]
 CAMERA_EYE = (-0.6, 2.4, 4.8)
 CAMERA_TARGET = (0.1, 0.9, -0.4)
 FPS = 30
-FRAMES_PER_DAY = 45        # 1.5 s per simulated day in human mode
+FRAMES_PER_DAY = 90        # 3 s per simulated day in human mode
 END_HOLD_FRAMES = 90       # keep the end banner on screen for 3 s
 PATIENT_BASE = (0.0, 0.02, 0.0)
 

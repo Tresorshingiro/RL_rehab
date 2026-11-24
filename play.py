@@ -73,11 +73,16 @@ def main():
     parser = argparse.ArgumentParser(description="Run the trained rehab coach.")
     parser.add_argument("--algo", choices=["dqn", "reinforce", "a2c", "ppo"], help="default: best overall")
     parser.add_argument("--episodes", type=int, default=1)
-    parser.add_argument("--seed", type=int, default=10_000, help="10000+ are held-out patients")
+    parser.add_argument("--seed", type=int, default=None,
+                        help="patient seed (10000+ are held-out patients); default: a random held-out patient")
     parser.add_argument("--profiles", choices=["train", "unseen"], default="train")
     parser.add_argument("--no-gui", action="store_true")
-    parser.add_argument("--frames-per-day", type=int, default=45, help="lower = faster animation")
+    parser.add_argument("--frames-per-day", type=int, default=90, help="frames per simulated day at 30 FPS (90 = 3 s per day); lower = faster")
     args = parser.parse_args()
+    if args.seed is None:
+        # Random held-out patient (never used for training or model selection).
+        # The seed is printed with each episode, so any run can be replayed with --seed.
+        args.seed = int(np.random.default_rng().integers(10_000, 100_000))
 
     algo, path = choose_model(args.algo)
     if path is None:
