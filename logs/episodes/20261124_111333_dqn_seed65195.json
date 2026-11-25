@@ -1,0 +1,700 @@
+{
+  "agent": "dqn",
+  "seed": 65195,
+  "profile_mode": "train",
+  "steps": [
+    {
+      "day": 1,
+      "observation": [
+        0.3596,
+        0.8,
+        0.4533,
+        0.2,
+        0.6381,
+        1.0,
+        0.0,
+        0.25,
+        0.0,
+        0.0
+      ],
+      "action": 7,
+      "action_name": "Motivation reminder",
+      "reward": -0.5,
+      "info": {
+        "status": "skipped",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 2,
+      "observation": [
+        0.3596,
+        0.8,
+        0.3933,
+        0.1092,
+        0.7038,
+        0.8571,
+        0.0,
+        0.25,
+        0.0238,
+        0.0714
+      ],
+      "action": 3,
+      "action_name": "Add a set",
+      "reward": 1.0684,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 3,
+      "observation": [
+        0.3663,
+        1.0,
+        0.3562,
+        0.0669,
+        0.7152,
+        0.8571,
+        0.0,
+        0.5,
+        0.0476,
+        0.1429
+      ],
+      "action": 1,
+      "action_name": "Increase difficulty",
+      "reward": 1.7713,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 4,
+      "observation": [
+        0.38,
+        0.9507,
+        0.3439,
+        0.0983,
+        0.7255,
+        0.8571,
+        0.25,
+        0.5,
+        0.0714,
+        0.2143
+      ],
+      "action": 3,
+      "action_name": "Add a set",
+      "reward": 2.3276,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 5,
+      "observation": [
+        0.3992,
+        1.0,
+        0.3355,
+        0.1285,
+        0.7347,
+        0.8571,
+        0.25,
+        0.75,
+        0.0952,
+        0.2857
+      ],
+      "action": 3,
+      "action_name": "Add a set",
+      "reward": 2.6349,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 6,
+      "observation": [
+        0.4216,
+        1.0,
+        0.3521,
+        0.1945,
+        0.7431,
+        0.8571,
+        0.25,
+        1.0,
+        0.119,
+        0.3571
+      ],
+      "action": 7,
+      "action_name": "Motivation reminder",
+      "reward": 2.4548,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 7,
+      "observation": [
+        0.4421,
+        0.8859,
+        0.3783,
+        0.2721,
+        0.8181,
+        0.8571,
+        0.25,
+        1.0,
+        0.1429,
+        0.4286
+      ],
+      "action": 7,
+      "action_name": "Motivation reminder",
+      "reward": 2.5222,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 8,
+      "observation": [
+        0.4634,
+        0.8367,
+        0.4249,
+        0.3557,
+        0.8304,
+        0.8571,
+        0.25,
+        1.0,
+        0.1667,
+        0.5
+      ],
+      "action": 5,
+      "action_name": "Rest day",
+      "reward": 0.0,
+      "info": {
+        "status": "rest",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 9,
+      "observation": [
+        0.4634,
+        0.8367,
+        0.2149,
+        0.0379,
+        0.8112,
+        1.0,
+        0.25,
+        1.0,
+        0.1905,
+        0.0
+      ],
+      "action": 7,
+      "action_name": "Motivation reminder",
+      "reward": 2.8232,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 10,
+      "observation": [
+        0.4876,
+        0.9696,
+        0.2298,
+        0.1587,
+        0.8456,
+        1.0,
+        0.25,
+        1.0,
+        0.2143,
+        0.0714
+      ],
+      "action": 1,
+      "action_name": "Increase difficulty",
+      "reward": 4.1026,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 11,
+      "observation": [
+        0.5246,
+        0.9656,
+        0.2842,
+        0.3103,
+        0.8429,
+        1.0,
+        0.5,
+        1.0,
+        0.2381,
+        0.1429
+      ],
+      "action": 7,
+      "action_name": "Motivation reminder",
+      "reward": 3.3529,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 12,
+      "observation": [
+        0.5541,
+        0.7754,
+        0.3668,
+        0.4691,
+        0.8573,
+        1.0,
+        0.5,
+        1.0,
+        0.2619,
+        0.2143
+      ],
+      "action": 5,
+      "action_name": "Rest day",
+      "reward": 0.0,
+      "info": {
+        "status": "rest",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 13,
+      "observation": [
+        0.5541,
+        0.7754,
+        0.1568,
+        0.1513,
+        0.8354,
+        1.0,
+        0.5,
+        1.0,
+        0.2857,
+        0.0
+      ],
+      "action": 7,
+      "action_name": "Motivation reminder",
+      "reward": 3.8049,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 14,
+      "observation": [
+        0.5882,
+        0.9971,
+        0.2071,
+        0.2817,
+        0.8505,
+        1.0,
+        0.5,
+        1.0,
+        0.3095,
+        0.0714
+      ],
+      "action": 7,
+      "action_name": "Motivation reminder",
+      "reward": 2.8004,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 15,
+      "observation": [
+        0.6152,
+        0.9268,
+        0.2667,
+        0.4177,
+        0.8641,
+        1.0,
+        0.5,
+        1.0,
+        0.3333,
+        0.1429
+      ],
+      "action": 7,
+      "action_name": "Motivation reminder",
+      "reward": 2.9661,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 16,
+      "observation": [
+        0.6439,
+        0.8404,
+        0.3238,
+        0.5826,
+        0.868,
+        1.0,
+        0.5,
+        1.0,
+        0.3571,
+        0.2143
+      ],
+      "action": 5,
+      "action_name": "Rest day",
+      "reward": 0.0,
+      "info": {
+        "status": "rest",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 17,
+      "observation": [
+        0.6439,
+        0.8404,
+        0.1138,
+        0.2647,
+        0.845,
+        1.0,
+        0.5,
+        1.0,
+        0.381,
+        0.0
+      ],
+      "action": 7,
+      "action_name": "Motivation reminder",
+      "reward": 3.9203,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 18,
+      "observation": [
+        0.6791,
+        0.9187,
+        0.1788,
+        0.4191,
+        0.8507,
+        1.0,
+        0.5,
+        1.0,
+        0.4048,
+        0.0714
+      ],
+      "action": 0,
+      "action_name": "Keep plan",
+      "reward": 3.6963,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 19,
+      "observation": [
+        0.712,
+        0.8501,
+        0.2496,
+        0.5725,
+        0.8475,
+        1.0,
+        0.5,
+        1.0,
+        0.4286,
+        0.1429
+      ],
+      "action": 0,
+      "action_name": "Keep plan",
+      "reward": 3.1947,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 20,
+      "observation": [
+        0.74,
+        0.7608,
+        0.3278,
+        0.7372,
+        0.8445,
+        1.0,
+        0.5,
+        1.0,
+        0.4524,
+        0.2143
+      ],
+      "action": 5,
+      "action_name": "Rest day",
+      "reward": 0.0,
+      "info": {
+        "status": "rest",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 21,
+      "observation": [
+        0.74,
+        0.7608,
+        0.1178,
+        0.4194,
+        0.8239,
+        1.0,
+        0.5,
+        1.0,
+        0.4762,
+        0.0
+      ],
+      "action": 7,
+      "action_name": "Motivation reminder",
+      "reward": 3.352,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 22,
+      "observation": [
+        0.7695,
+        0.7672,
+        0.1998,
+        0.5759,
+        0.8571,
+        1.0,
+        0.5,
+        1.0,
+        0.5,
+        0.0714
+      ],
+      "action": 0,
+      "action_name": "Keep plan",
+      "reward": 3.0002,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 23,
+      "observation": [
+        0.7975,
+        0.6742,
+        0.2795,
+        0.7211,
+        0.8532,
+        1.0,
+        0.5,
+        1.0,
+        0.5238,
+        0.1429
+      ],
+      "action": 5,
+      "action_name": "Rest day",
+      "reward": 0.0,
+      "info": {
+        "status": "rest",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 24,
+      "observation": [
+        0.7975,
+        0.6742,
+        0.0695,
+        0.4033,
+        0.8317,
+        1.0,
+        0.5,
+        1.0,
+        0.5476,
+        0.0
+      ],
+      "action": 1,
+      "action_name": "Increase difficulty",
+      "reward": 4.8631,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 25,
+      "observation": [
+        0.8421,
+        0.8375,
+        0.1667,
+        0.6028,
+        0.8303,
+        1.0,
+        0.75,
+        1.0,
+        0.5714,
+        0.0714
+      ],
+      "action": 7,
+      "action_name": "Motivation reminder",
+      "reward": 4.7392,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 26,
+      "observation": [
+        0.8855,
+        0.7919,
+        0.2921,
+        0.8156,
+        0.8966,
+        1.0,
+        0.75,
+        1.0,
+        0.5952,
+        0.1429
+      ],
+      "action": 5,
+      "action_name": "Rest day",
+      "reward": 0.0,
+      "info": {
+        "status": "rest",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 27,
+      "observation": [
+        0.8855,
+        0.7919,
+        0.0821,
+        0.4978,
+        0.8707,
+        1.0,
+        0.75,
+        1.0,
+        0.619,
+        0.0
+      ],
+      "action": 0,
+      "action_name": "Keep plan",
+      "reward": 4.5409,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 28,
+      "observation": [
+        0.9269,
+        0.7593,
+        0.2199,
+        0.7184,
+        0.8655,
+        1.0,
+        0.75,
+        1.0,
+        0.6429,
+        0.0714
+      ],
+      "action": 7,
+      "action_name": "Motivation reminder",
+      "reward": 3.6177,
+      "info": {
+        "status": "session",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 29,
+      "observation": [
+        0.9641,
+        0.6288,
+        0.3668,
+        0.9569,
+        0.9282,
+        1.0,
+        0.75,
+        1.0,
+        0.6667,
+        0.1429
+      ],
+      "action": 5,
+      "action_name": "Rest day",
+      "reward": 0.0,
+      "info": {
+        "status": "rest",
+        "outcome": "Running",
+        "flags_used": 0
+      }
+    },
+    {
+      "day": 30,
+      "observation": [
+        0.9641,
+        0.6288,
+        0.1568,
+        0.6391,
+        0.8992,
+        1.0,
+        0.75,
+        1.0,
+        0.6905,
+        0.0
+      ],
+      "action": 1,
+      "action_name": "Increase difficulty",
+      "reward": 20.3199,
+      "info": {
+        "status": "session",
+        "outcome": "Success",
+        "flags_used": 0
+      }
+    }
+  ],
+  "outcome": "Success",
+  "days": 30,
+  "total_reward": 87.373
+}

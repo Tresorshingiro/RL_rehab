@@ -13,8 +13,8 @@ Four TorchRL agents are trained on the same custom Gymnasium environment:
 ## Quick start
 
 ```bash
-git clone https://github.com/Tresorshingiro/RL_rehab.git
-cd RL_rehab
+git clone https://github.com/Tresorshingiro/Tresor_Nkurunziza_rl_summative.git
+cd Tresor_Nkurunziza_rl_summative
 uv sync
 uv run main.py                 # best agent, 3D window + verbose terminal output
 ```

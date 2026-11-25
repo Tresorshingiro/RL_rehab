@@ -7,7 +7,7 @@ matplotlib.use("Agg")                    # no display needed (works on Kaggle)
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from training.convergence import convergence_episode, rolling_mean
+from training.convergence import TOLERANCE, convergence_band, convergence_episode, rolling_mean
 
 ALGOS = ["dqn", "reinforce", "a2c", "ppo"]
 LABELS = {"dqn": "DQN", "reinforce": "REINFORCE", "a2c": "A2C", "ppo": "PPO"}
@@ -62,19 +62,30 @@ def save(fig, name, root):
     print("saved", path)
 
 
+def method_grid(title):
+    """2 x 2 subplots, one per method, sharing both axes so the panels compare directly."""
+    fig, axes = plt.subplots(2, 2, figsize=(9, 6), sharex=True, sharey=True)
+    fig.suptitle(title, color=INK, fontsize=11)
+    for ax in axes[1]:
+        ax.set_xlabel("Episode")
+    for ax in axes[:, 0]:
+        ax.set_ylabel("Cumulative reward per episode")
+    return fig, axes.ravel()
+
+
 def plot_reward_comparison(best, root):
-    # All four lines end within a few points of each other, so the legend names them
-    # (direct end labels would have to be pushed too far from their lines).
-    fig, ax = plt.subplots(figsize=(8, 4.5))
-    for algo in ALGOS:
+    """One panel per method: raw episode returns (faint) and their rolling mean."""
+    fig, axes = method_grid(f"Cumulative reward per episode, best config per method "
+                            f"(line = {WINDOW}-episode rolling mean)")
+    for ax, algo in zip(axes, ALGOS):
         df = load_log(algo, best[algo], root)
         smooth = rolling_mean(df["episode_return"], WINDOW)
-        ax.plot(df["episode"], df["episode_return"], color=COLORS[algo], alpha=0.12, linewidth=0.8)
-        ax.plot(df["episode"], smooth, color=COLORS[algo], label=f"{LABELS[algo]} ({best[algo]})")
+        ax.plot(df["episode"], df["episode_return"], color=COLORS[algo], alpha=0.15, linewidth=0.6)
+        ax.plot(df["episode"], smooth, color=COLORS[algo])
         ax.plot([df["episode"].iloc[-1]], [smooth.iloc[-1]], "o", color=COLORS[algo], markersize=5)
-    ax.set(title=f"Episode return, best config per method ({WINDOW}-episode rolling mean)",
-           xlabel="Episode", ylabel="Cumulative reward per episode")
-    ax.legend(loc="lower right")
+        ax.annotate(f"{smooth.iloc[-1]:.1f}", (df["episode"].iloc[-1], smooth.iloc[-1]),
+                    xytext=(0, 8), textcoords="offset points", ha="right", color=INK, fontsize=8)
+        ax.set_title(f"{LABELS[algo]} ({best[algo]})", color=INK, fontsize=10, loc="left")
     save(fig, "reward_comparison.png", root)
 
 
@@ -122,14 +133,23 @@ def sweep_summary(root):
     return table
 
 
-def plot_convergence(best, table, root):
-    fig, ax = plt.subplots(figsize=(7, 3.5))
-    best_rows = table[table["config_id"].isin(best.values())].set_index("algo").loc[ALGOS]
-    bars = ax.bar([LABELS[a] for a in ALGOS], best_rows["converged_at_episode"],
-                  color=[COLORS[a] for a in ALGOS], width=0.6)
-    ax.bar_label(bars, color=INK, fontsize=9, padding=2)
-    ax.set(title="Episodes until the return stabilises (best config)", ylabel="Episode")
-    ax.grid(axis="x", visible=False)
+def plot_convergence(best, root):
+    """One panel per method: smoothed return, the final-level band and the convergence episode."""
+    fig, axes = method_grid("Episodes until the return stabilises (best config per method)")
+    for ax, algo in zip(axes, ALGOS):
+        df = load_log(algo, best[algo], root)
+        smooth = rolling_mean(df["episode_return"], WINDOW)
+        episode, level, band = convergence_band(df["episode_return"], WINDOW)
+        ax.axhspan(level - band, level + band, color=COLORS[algo], alpha=0.12, linewidth=0)
+        ax.plot(df["episode"], smooth, color=COLORS[algo])
+        ax.axvline(episode, color=MUTED, linestyle="--", linewidth=1)
+        # x in data units, y in axes units: the label sits in the empty bottom strip, by the line
+        ax.text(episode, 0.05, f" stable from\n episode {episode}", transform=ax.get_xaxis_transform(),
+                ha="left", va="bottom", color=INK, fontsize=8)
+        ax.set_title(f"{LABELS[algo]} ({best[algo]})", color=INK, fontsize=10, loc="left")
+    fig.text(0.5, -0.01, f"Shaded band: final level (mean of the last 10% of the curve) "
+             f"± {int(TOLERANCE * 100)}% of the curve's range. Dashed line: last time the curve leaves the band.",
+             ha="center", color=MUTED, fontsize=8)
     save(fig, "convergence.png", root)
 
 
@@ -161,8 +181,8 @@ def make_all_figures(root="."):
     plot_reward_comparison(best, root)
     plot_dqn_loss(best, root)
     plot_entropy(best, root)
-    table = sweep_summary(root)
-    plot_convergence(best, table, root)
+    sweep_summary(root)
+    plot_convergence(best, root)
     plot_generalisation(root)
 
 
